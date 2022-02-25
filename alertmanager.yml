@@ -14,7 +14,7 @@ receivers:
   - send_resolved: true
     to: devops@blick.ng
     from: devops@blick.ng
-    smarthost: blick.ng:587
+    smarthost: mail.blick.ng:587
     auth_username: devops@blick.ng
     auth_identity: devops@blick.ng
     auth_password: password
