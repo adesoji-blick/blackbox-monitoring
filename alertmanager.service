@@ -4,7 +4,10 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/alertmanager/alertmanager --config.file=/usr/local/bin/alertmanager/alertmanager.yml
+ExecStart=/usr/local/bin/alertmanager/alertmanager \
+--config.file=/usr/local/bin/alertmanager/alertmanager.yml \
+--storage.path=/var/lib/alertmanager \
+--log.level=debug
 
 [Install]
 WantedBy=multi-user.target
