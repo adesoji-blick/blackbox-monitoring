@@ -1,2 +1,12 @@
-# blackbox-monitoring
-monitoring endpoints using blackbox exporter, prometheus, grafana and alert_manager
+# Blackbox EndPoint Monitoring Installation resource
+This resource installs prometheus, node exporter, blackbox exporter, alert manager and grafana
+
+### 
+```
+Clone Repo
+```
+
+### 
+```
+Run [repo]/monitoringTool-install.sh
+```
