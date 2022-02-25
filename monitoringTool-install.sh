@@ -67,7 +67,7 @@ sudo systemctl enable grafana-server
 sudo systemctl start grafana-server
 
 ## Grafana DashBoard
-11175
+# 11175
 
 ## Cleanup
 cd /home/ec2-user
