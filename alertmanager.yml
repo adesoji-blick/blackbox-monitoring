@@ -9,15 +9,15 @@ route:
   # Send all notifications to me.
   receiver: email-me
 receivers:
-- name: email-me
+- name: "email notification"
   email_configs:
   - send_resolved: true
     to: devops@blick.ng
     from: devops@blick.ng
     smarthost: blick.ng:587
-    auth_username: "devops@blick.ng"
-    auth_identity: "devops@blick.ng"
-    auth_password: "****"
+    auth_username: devops@blick.ng
+    auth_identity: devops@blick.ng
+    auth_password: password
 inhibit_rules:
   - source_match:
       severity: 'critical'
