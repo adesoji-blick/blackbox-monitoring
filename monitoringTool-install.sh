@@ -11,8 +11,19 @@ sudo systemctl enable prometheus
 sudo systemctl start prometheus
 
 
+## Installing Node Exporter  ---- port 9100
+cd /home/ec2-user/
+echo ----- Installing Prometheus Node Exporter ------
+wget https://github.com/prometheus/node_exporter/releases/download/v1.3.1/node_exporter-1.3.1.linux-amd64.tar.gz
+tar xvf node_exporter-1.3.1.linux-amd64.tar.gz
+sudo cp node_exporter-1.3.1.linux-amd64/node_exporter /usr/local/bin
+sudo cp blackbox-monitoring/node-exporter.service /etc/systemd/system/node-exporter.service
+sudo systemctl enable node-exporter
+sudo systemctl start node-exporter
+
+
 ## Installing Black Box Exporter  ---- port 9115
-# cd /home/ec2-user/
+cd /home/ec2-user/
 echo ---- Installing Blackbox exporter -----
 wget https://github.com/prometheus/blackbox_exporter/releases/download/v0.19.0/blackbox_exporter-0.19.0.linux-amd64.tar.gz
 tar xvf blackbox_exporter-0.19.0.linux-amd64.tar.gz
@@ -21,17 +32,6 @@ sudo cp -r . /usr/local/bin/blackbox
 sudo cp /home/ec2-user/blackbox-monitoring/blackbox.service /etc/systemd/system/blackbox.service
 sudo systemctl enable blackbox
 sudo systemctl start blackbox
-
-
-## Installing Node Exporter  ---- port 9100
-# cd /home/ec2-user/
-echo ----- Installing Prometheus Node Exporter ------
-wget https://github.com/prometheus/node_exporter/releases/download/v1.3.1/node_exporter-1.3.1.linux-amd64.tar.gz
-tar xvf node_exporter-1.3.1.linux-amd64.tar.gz
-sudo cp node_exporter-1.3.1.linux-amd64/node_exporter /usr/local/bin
-sudo cp blackbox-monitoring/node-exporter.service /etc/systemd/system/node-exporter.service
-sudo systemctl enable node-exporter
-sudo systemctl start node-exporter
 
 
 ## Installing Alert Manager  ---- port 9093
@@ -58,7 +58,7 @@ sudo systemctl restart prometheus
 # ./promtool check rules prometheus_rules.yml
 
 
-## Installing Grafana ---- port 3000
+## Installing Grafana Server ---- port 3000
 echo ----- Installing grafana -------
 cd /home/ec2-user/
 wget https://dl.grafana.com/enterprise/release/grafana-enterprise-8.4.2-1.x86_64.rpm
