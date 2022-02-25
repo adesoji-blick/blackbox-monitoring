@@ -12,7 +12,7 @@ sudo systemctl start prometheus
 
 
 ## Installing Black Box Exporter  ---- port 9115
-cd /home/ec2-user/
+# cd /home/ec2-user/
 echo ---- Installing Blackbox exporter -----
 wget https://github.com/prometheus/blackbox_exporter/releases/download/v0.19.0/blackbox_exporter-0.19.0.linux-amd64.tar.gz
 tar xvf blackbox_exporter-0.19.0.linux-amd64.tar.gz
@@ -24,7 +24,7 @@ sudo systemctl start blackbox
 
 
 ## Installing Node Exporter  ---- port 9100
-cd /home/ec2-user/
+# cd /home/ec2-user/
 echo ----- Installing Prometheus Node Exporter ------
 wget https://github.com/prometheus/node_exporter/releases/download/v1.3.1/node_exporter-1.3.1.linux-amd64.tar.gz
 tar xvf node_exporter-1.3.1.linux-amd64
