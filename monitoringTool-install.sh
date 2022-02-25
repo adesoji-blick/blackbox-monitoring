@@ -66,6 +66,8 @@ sudo yum install grafana-enterprise-8.4.2-1.x86_64.rpm -y
 sudo systemctl enable grafana-server
 sudo systemctl start grafana-server
 
+## Grafana DashBoard
+11175
 
 ## Cleanup
 cd /home/ec2-user
