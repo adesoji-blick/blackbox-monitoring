@@ -1,9 +1,9 @@
 # Blackbox EndPoint Monitoring Installation resource
-This resource installs prometheus, node exporter, blackbox exporter, alert manager and grafana
+This resource installs prometheus, node-exporter, blackbox-exporter, alert-manager and grafana
 
 ### 
 ```
-Clone Repo
+Clone Repo into monitoring server
 ```
 
 ### 

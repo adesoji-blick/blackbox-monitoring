@@ -37,15 +37,9 @@ scrape_configs:
       module: [http_2xx]
     static_configs:
       - targets:
-        - https://api-solarbase.arnergy.com/api/v1/users/5
-        - https://iot-solarbase.arnergy.com/devicedata
-        - https://api-solarbase.arnergy.com/api/v1/transactionHistories/?filter[where][userId]=5
-        - http://arnergy-dash-api.herokuapp.com/online-devices?DeviceID=$deviceId
-       # - https://api-solarbase.arnergy.com/api/v1/maintenance?filter={"include": "installation"}
-       # - https://api-solarbase.arnergy.com/api/v1/maintenance?filter={"include": [{"installation":"deviceType"},"operationsEngineer","comments"]}
-        - https://api-solarbase.arnergy.com/api/v1/installations?filter[order]=updatedAt%20DESC&filter={"include":["locations","deviceType"]}
-        - https://iot-solarbase.arnergy.com/online-devices
-        - https://api-solarbase.arnergy.com/api/v1/users?filter[where][roleType]=customer
+        - https://blick.ng/
+        - https://blick.ng/wp-login.php?redirect_to=https%3A%2F%2Fblick.ng%2Fwp-admin%2F&reauth=1
+        - https://www.google.com/
         - http://arnergy.com/
     relabel_configs:
       - source_labels: [__address__]
