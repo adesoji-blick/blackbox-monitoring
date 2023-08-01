@@ -14,7 +14,7 @@ wget https://github.com/prometheus/prometheus/releases/download/v${prometheus_ve
 tar -xvf prometheus-${prometheus_version}.linux-amd64.tar.gz 
 cd prometheus-${prometheus_version}.linux-amd64/
 sudo cp -r . /usr/local/bin/prometheus
-sudo cp /home/ec2-user/monitoring-stack/prometheus.service /etc/systemd/system/prometheus.service
+sudo cp /home/ec2-user/blackbox-monitoring/prometheus.service /etc/systemd/system/prometheus.service
 sudo systemctl enable prometheus
 sudo systemctl start prometheus
 
@@ -25,7 +25,7 @@ echo ----- Installing Prometheus Node Exporter ------
 wget https://github.com/prometheus/node_exporter/releases/download/v${node_exporter_version}/node_exporter-${node_exporter_version}.linux-amd64.tar.gz
 tar xvf node_exporter-${node_exporter_version}.linux-amd64.tar.gz
 sudo cp node_exporter-${node_exporter_version}.linux-amd64/node_exporter /usr/local/bin
-sudo cp monitoring-stack/node-exporter.service /etc/systemd/system/node-exporter.service
+sudo cp blackbox-monitoring/node-exporter.service /etc/systemd/system/node-exporter.service
 sudo systemctl enable node-exporter
 sudo systemctl start node-exporter
 
@@ -37,8 +37,8 @@ wget https://github.com/prometheus/blackbox_exporter/releases/download/v${blackb
 tar xvf blackbox_exporter-${blackbox_exporter_version}.linux-amd64.tar.gz
 cd blackbox_exporter-${blackbox_exporter_version}.linux-amd64/
 sudo cp -r . /usr/local/bin/blackbox
-sudo cp /home/ec2-user/monitoring-stack/blackbox.yml /usr/local/bin/blackbox
-sudo cp /home/ec2-user/monitoring-stack/blackbox.service /etc/systemd/system/blackbox.service
+sudo cp /home/ec2-user/blackbox-monitoring/blackbox.yml /usr/local/bin/blackbox
+sudo cp /home/ec2-user/blackbox-monitoring/blackbox.service /etc/systemd/system/blackbox.service
 sudo systemctl enable blackbox
 sudo systemctl start blackbox
 
@@ -51,9 +51,9 @@ tar vxf alertmanager-${alertmanager_version}.linux-amd64.tar.gz
 cd alertmanager-${alertmanager_version}.linux-amd64/
 sudo cp -r . /usr/local/bin/alertmanager
 cd /home/ec2-user/
-sudo cp monitoring-stack/alertmanager.service  /etc/systemd/system/alertmanager.service
+sudo cp blackbox-monitoring/alertmanager.service  /etc/systemd/system/alertmanager.service
 sudo rm /usr/local/bin/alertmanager/alertmanager.yml
-sudo cp monitoring-stack/alertmanager.yml /usr/local/bin/alertmanager/alertmanager.yml
+sudo cp blackbox-monitoring/alertmanager.yml /usr/local/bin/alertmanager/alertmanager.yml
 # /usr/local/bin/alertmanager/amtool check-config /usr/local/bin/alertmanager/alertmanager.yml
 sudo systemctl enable alertmanager
 sudo systemctl start alertmanager
@@ -62,8 +62,8 @@ sudo systemctl start alertmanager
 ## include Node-exporter job on prometheus.yml file and creating prometheus_rule.yml file
 cd /home/ec2-user/
 echo ----- include Node and blackbox exporter job on prometheus.yml file and creating prometheus_rule.yml file -----
-sudo cp /home/ec2-user/monitoring-stack/prometheus.yml /usr/local/bin/prometheus/prometheus.yml 
-sudo cp monitoring-stack/prometheus_rules.yml  /usr/local/bin/prometheus/prometheus_rules.yml
+sudo cp /home/ec2-user/blackbox-monitoring/prometheus.yml /usr/local/bin/prometheus/prometheus.yml 
+sudo cp blackbox-monitoring/prometheus_rules.yml  /usr/local/bin/prometheus/prometheus_rules.yml
 sudo systemctl restart prometheus
 # ./promtool check rules prometheus_rules.yml
 
@@ -78,7 +78,7 @@ sudo systemctl start grafana-server
 
 ## Copy monitoring update script to home folder
 echo ----- copying monitoring update file to home folder -----
-sudo cp -rf /home/ec2-user/monitoring-stack/monitoring-update.sh /home/ec2-user/
+sudo cp -rf /home/ec2-user/blackbox-monitoring/monitoring-update.sh /home/ec2-user/
 
 
 ## Grafana DashBoard
