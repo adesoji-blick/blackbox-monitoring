@@ -1,4 +1,5 @@
 # my global config
+
 global:
   scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
   evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
@@ -35,6 +36,9 @@ scrape_configs:
     ec2_sd_configs:
       - region: ca-central-1
         port: 9100
+        filters:
+          - name: 'tag:Name'
+            values: ['server Name']  
 
   - job_name: "blackbox"
     metrics_path: /probe
@@ -42,10 +46,20 @@ scrape_configs:
       module: [http_2xx]
     static_configs:
       - targets:
-        - https://blick.ng/
-        - https://blick.ng/wp-login.php?redirect_to=https%3A%2F%2Fblick.ng%2Fwp-admin%2F&reauth=1
-        - https://www.google.com/
-        - http://arnergy.com/
+        - https://blick.ng
+       
+      - targets: ['https://partech.com/']
+        labels:
+          name: 'partech'
+
+      - targets: ['https://punchh.com/']
+        labels:
+          name: 'punchh'
+
+      - targets: ['https://google.com']
+        labels:
+          name: 'google'
+
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target

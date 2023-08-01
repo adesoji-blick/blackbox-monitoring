@@ -1,26 +1,28 @@
 global:
   resolve_timeout: 5m
+  smtp_smarthost: mail.blick.ng:587
+  smtp_from: devops@blick.ng
+  smtp_auth_identity: devops@blick.ng
+  smtp_auth_username: devops@blick.ng
+  smtp_auth_password: <secret>
 
 route:
-  group_by: ['alertname']
-  # group_wait: 30s
+  group_by: ['alertname', 'prod', 'instance']
+  group_wait: 30s
   group_interval: 60s
   repeat_interval: 60s
   # Send all notifications to me.
   receiver: email notification
+
 receivers:
 - name: "email notification"
   email_configs:
   - send_resolved: true
-    to: devops@blick.ng
-    from: devops@blick.ng
-    smarthost: mail.blick.ng:587
-    auth_username: devops@blick.ng
-    auth_identity: devops@blick.ng
-    auth_password: password
+    to: 'info@blick.ng, adesoji@blick.ng'
+
 inhibit_rules:
   - source_match:
       severity: 'critical'
     target_match:
       severity: 'warning'
-    equal: ['alertname', 'dev', 'instance']
+    equal: ['alertname', 'prod', 'instance']
